@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment2"
             app:destination="@id/detailsFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_addPropertyFragment"
+            app:destination="@id/addPropertyFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment2"
         android:name="com.example.e_waste.ui.home.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/addPropertyFragment"
+        android:name="com.example.e_waste.ui.home.AddPropertyFragment"
+        android:label="fragment_add_property"
+        tools:layout="@layout/fragment_add_property" />
 </navigation>

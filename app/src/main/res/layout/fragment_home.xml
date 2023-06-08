@@ -21,4 +21,171 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_slider">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:checkedChip="@id/chip_apartment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_apartment"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Apartment" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_land"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Land" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_car"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Car" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_bike"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bike" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_restaurant"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Restaurant" />
+
+
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home_all"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chip_group_all"
+                tools:itemCount="3" />
+
+            <TextView
+                android:id="@+id/txt_home_shoe_no_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="No items"
+                android:gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chip_group_all" />
+
+            <TextView
+                android:id="@+id/txt_other_products_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Varieties of Properties"
+                android:textColor="@color/brown_dark"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_home_all" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home_other_properties"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintBottom_toTopOf="@id/view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_other_products_text"
+                app:layout_constraintVertical_bias="0.0"
+                tools:itemCount="3" />
+
+            <TextView
+                android:id="@+id/txt_home_varieties_no_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:visibility="gone"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="No items"
+                app:layout_constraintBottom_toTopOf="@id/view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_other_products_text" />
+            <View
+                android:id="@+id/view"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/pb_home"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_property"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/brown_dark"
+        android:tintMode="@color/white"
+        android:src="@drawable/baseline_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

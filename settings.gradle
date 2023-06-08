@@ -10,6 +10,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // For ImageSlider library
+        maven { url 'https://jitpack.io' }
     }
 }
 rootProject.name = "E-Waste"

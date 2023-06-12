@@ -1,12 +1,8 @@
-package com.example.e_waste.ui.home.adapter
-
+package com.example.e_waste.ui.fav
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
-import android.view.View.OnLongClickListener
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -15,9 +11,9 @@ import com.example.e_waste.R
 import com.example.e_waste.databinding.RvHomeAllBinding
 import com.example.e_waste.model.Property
 
-class PropertyAdapter: RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>() {
+class FavAdapter: RecyclerView.Adapter<FavAdapter.FavViewHolder>() {
 
-    inner class PropertyViewHolder(val binding: RvHomeAllBinding): RecyclerView.ViewHolder(binding.root)
+    inner class FavViewHolder(val binding: RvHomeAllBinding): RecyclerView.ViewHolder(binding.root)
 
     private val diffUtilCallBack = object : DiffUtil.ItemCallback<Property>(){
         override fun areItemsTheSame(oldItem: Property, newItem: Property): Boolean {
@@ -31,35 +27,29 @@ class PropertyAdapter: RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>(
 
     val differCallBack = AsyncListDiffer(this, diffUtilCallBack)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropertyViewHolder {
-        return PropertyViewHolder(RvHomeAllBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavViewHolder {
+        return FavViewHolder(RvHomeAllBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: PropertyViewHolder, position: Int) {
-        val property = differCallBack.currentList[position]
+    override fun onBindViewHolder(holder: FavViewHolder, position: Int) {
+        val wishlist = differCallBack.currentList[position]
 
         holder.binding.apply {
-            txtPropertyName.text = property.name
-            txtPropertyPrice.text = "${property.price}/= Taka"
+            txtPropertyName.text = wishlist.name
+            txtPropertyPrice.text = "${wishlist.price}/= Taka"
 
             Glide.with(holder.itemView.context)
-                .load(property.url)
+                .load(wishlist.url)
                 .placeholder(R.drawable.img_e_auction)
                 .into(imgProperty)
 
             imgAddWishlist.setOnClickListener {
-                onItemClickListener?.onFavIconClick(property)
+                onItemClickListener?.onFavIconClick(wishlist)
             }
             root.setOnClickListener {
-                onItemClickListener?.onPropertyClick(property)
+                onItemClickListener?.onPropertyClick(wishlist)
             }
-            root.setOnLongClickListener(object : OnLongClickListener{
-                override fun onLongClick(p0: View?): Boolean {
-                    onItemClickListener?.onLongClick(property)
-                    return true
-                }
-            })
         }
 
     }
@@ -73,7 +63,6 @@ class PropertyAdapter: RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>(
     interface OnItemClickListener{
         fun onPropertyClick(property: Property)
         fun onFavIconClick(property: Property)
-        fun onLongClick(property: Property)
     }
 
     fun setOnClickListener(listener: OnItemClickListener){

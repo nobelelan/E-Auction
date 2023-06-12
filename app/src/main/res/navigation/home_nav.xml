@@ -21,7 +21,11 @@
         android:id="@+id/detailsFragment2"
         android:name="com.example.e_waste.ui.home.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="currentProperty"
+            app:argType="com.example.e_waste.model.Property" />
+    </fragment>
     <fragment
         android:id="@+id/addPropertyFragment"
         android:name="com.example.e_waste.ui.home.AddPropertyFragment"

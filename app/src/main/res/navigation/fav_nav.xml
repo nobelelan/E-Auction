@@ -18,5 +18,9 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.e_waste.ui.home.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="currentProperty"
+            app:argType="com.example.e_waste.model.Property" />
+    </fragment>
 </navigation>

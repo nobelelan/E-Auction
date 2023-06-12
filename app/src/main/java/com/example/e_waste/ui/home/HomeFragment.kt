@@ -16,6 +16,7 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.e_commerce.ui.fragments.Property.adapter.VarietiesAdapter
 import com.example.e_waste.R
 import com.example.e_waste.databinding.FragmentHomeBinding
+import com.example.e_waste.model.Property
 import com.example.e_waste.ui.home.adapter.PropertyAdapter
 import com.example.e_waste.utils.Constants.APARTMENT
 import com.example.e_waste.utils.Constants.BIKE
@@ -72,6 +73,65 @@ class HomeFragment : Fragment() {
 
             override fun onItemSelected(position: Int) {
                 TODO("Not yet implemented")
+            }
+        })
+
+        propertyAdapter.setOnClickListener(object : PropertyAdapter.OnItemClickListener{
+            override fun onPropertyClick(property: Property) {
+                navigateToDetails(property)
+            }
+
+            override fun onFavIconClick(property: Property) {
+                addPropertyToFav(property)
+            }
+
+            override fun onLongClick(property: Property) {
+                // Implement this only if you separate property for each user
+            }
+        })
+
+        varietiesAdapter.setOnClickListener(object : VarietiesAdapter.OnItemClickListener{
+            override fun onPropertyClick(property: Property) {
+                navigateToDetails(property)
+            }
+
+            override fun onFavIconClick(property: Property) {
+                addPropertyToFav(property)
+            }
+
+            override fun onLongClick(property: Property) {
+                // Implement this only if you separate property for each user
+            }
+        })
+    }
+
+    private fun navigateToDetails(property: Property) {
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment2(property)
+        findNavController().navigate(action)
+    }
+
+    private fun addPropertyToFav(property: Property){
+        firebaseViewModel.addFav(
+            hashMapOf(
+                "name" to property.name.toString(),
+                "url" to property.url.toString(),
+                "price" to property.price.toString(),
+                "description" to property.description.toString()
+            )
+        )
+        firebaseViewModel.addFav.observe(viewLifecycleOwner, Observer { resource->
+            when(resource){
+                is Resource.Loading ->{
+                    binding.pbHome.show()
+                }
+                is Resource.Success ->{
+                    binding.pbHome.hide()
+                    requireActivity().showToast(getString(R.string.added_to_fav))
+                }
+                is Resource.Error ->{
+                    binding.pbHome.hide()
+                    requireActivity().showToast(resource.message.toString())
+                }
             }
         })
     }

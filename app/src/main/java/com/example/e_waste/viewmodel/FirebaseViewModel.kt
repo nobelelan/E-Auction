@@ -35,15 +35,32 @@ class FirebaseViewModel: ViewModel() {
     private val _deleteVarieties = MutableLiveData<Resource<String>>()
     val deleteVarieties: LiveData<Resource<String>>
         get() = _deleteVarieties
+    
+    // Fav
+    private val _addFav = MutableLiveData<Resource<String>>()
+    val addFav: LiveData<Resource<String>>
+        get() = _addFav
+
+    private val _getFav = MutableLiveData<Resource<List<Property>>>()
+    val getFav: LiveData<Resource<List<Property>>>
+        get() = _getFav
+
+    private val _deleteFav = MutableLiveData<Resource<String>>()
+    val deleteFav: LiveData<Resource<String>>
+        get() = _deleteFav
 
     private val auth = Firebase.auth
     private val allPropertiesCollectionRef = Firebase.firestore.collection("allProperties")
     private val varietiesCollectionRef = Firebase.firestore.collection("varieties")
 
+    private val favCollectionRef = Firebase.firestore.collection("users")
+        .document(auth.currentUser?.uid!!).collection("fav")
+
 
     init {
         getVarieties()
         getProperty(APARTMENT)
+        getFav()
     }
 
 
@@ -132,6 +149,52 @@ class FirebaseViewModel: ViewModel() {
                             }
                             .addOnFailureListener { error->
                                 _deleteVarieties.value = Resource.Error(message = error.message.toString())
+                            }
+                    }
+                }
+            }
+    }
+
+
+    fun addFav(property: HashMap<String, String>){
+        _addFav.value = Resource.Loading()
+        favCollectionRef.add(property)
+            .addOnSuccessListener {
+                _addFav.value = Resource.Success("Added to fav!")
+            }
+            .addOnFailureListener{
+                _addFav.value = Resource.Error(message = it.message.toString())
+            }
+    }
+
+    fun getFav(){
+        _getFav.value = Resource.Loading()
+        favCollectionRef.addSnapshotListener { querySnapshot, error ->
+            error?.let {
+                _getFav.value = Resource.Error(message = it.message.toString())
+            }
+            querySnapshot?.let {
+                _getFav.value = Resource.Success(it.toObjects())
+            }
+        }
+    }
+
+    fun deleteFav(property: Property){
+        _deleteFav.value = Resource.Loading()
+        favCollectionRef
+            .whereEqualTo("url", property.url)
+            .whereEqualTo("name", property.name)
+            .whereEqualTo("description", property.description)
+            .get()
+            .addOnSuccessListener {
+                if (it.documents.isNotEmpty()){
+                    it.forEach { document->
+                        favCollectionRef.document(document.id).delete()
+                            .addOnSuccessListener {
+                                _deleteFav.value = Resource.Success("Removed from fav!")
+                            }
+                            .addOnFailureListener { error->
+                                _deleteFav.value = Resource.Error(message = error.message.toString())
                             }
                     }
                 }

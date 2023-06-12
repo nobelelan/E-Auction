@@ -37,7 +37,7 @@ class FavAdapter: RecyclerView.Adapter<FavAdapter.FavViewHolder>() {
 
         holder.binding.apply {
             txtPropertyName.text = wishlist.name
-            txtPropertyPrice.text = "${wishlist.price}/= Taka"
+            txtCurrentBid.text = "Current Bid: ${wishlist.price}/= Taka"
 
             Glide.with(holder.itemView.context)
                 .load(wishlist.url)

@@ -9,5 +9,7 @@ data class Property(
     val type: String? = "",
     val url: String? = "",
     val price: String? = "",
+    val currentBid: String? = "",
+    val topBidder: String? = "",
     val description: String? = ""
 ): Parcelable

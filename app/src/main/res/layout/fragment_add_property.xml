@@ -67,7 +67,7 @@
         android:layout_marginTop="4dp"
         android:background="@drawable/custom_input"
         android:ems="10"
-        android:hint="Asking Price"
+        android:hint="Starting Bid"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"

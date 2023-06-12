@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         val graphIds = listOf(
             R.navigation.home_nav,
             R.navigation.fav_nav,
-            R.navigation.cart_nav,
             R.navigation.profile_nav
         )
         binding.bottomNav.setupWithNavController(

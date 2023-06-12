@@ -41,7 +41,7 @@ class PropertyAdapter: RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>(
 
         holder.binding.apply {
             txtPropertyName.text = property.name
-            txtPropertyPrice.text = "${property.price}/= Taka"
+            txtCurrentBid.text = "Current Bid: ${property.price}/= Taka"
 
             Glide.with(holder.itemView.context)
                 .load(property.url)

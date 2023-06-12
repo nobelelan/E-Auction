@@ -110,6 +110,7 @@ class AddPropertyFragment : Fragment() {
                 "type" to VARIETIES,
                 "url" to binding.edtPropertyUrl.text.toString(),
                 "price" to binding.edtAskingPrice.text.toString(),
+                "currentBid" to binding.edtAskingPrice.text.toString(),
                 "description" to binding.edtPropertyDescription.text.toString()
             )
         )
@@ -137,6 +138,7 @@ class AddPropertyFragment : Fragment() {
                 "type" to type,
                 "url" to binding.edtPropertyUrl.text.toString(),
                 "price" to binding.edtAskingPrice.text.toString(),
+                "currentBid" to binding.edtAskingPrice.text.toString(),
                 "description" to binding.edtPropertyDescription.text.toString()
             )
         )

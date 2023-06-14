@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.about_supervisor ->{
                     AlertDialog.Builder(this)
-                        .setTitle("About the Supervisor")
-                        .setMessage("This is all About supervisor")
+                        .setTitle("Afroza Islam")
+                        .setMessage("Lecturer at CCN University of Science & Technology")
                         .setPositiveButton("Ok"){_,_->}
                         .create().show()
                     true
@@ -44,7 +44,14 @@ class MainActivity : AppCompatActivity() {
                 R.id.about_us ->{
                     AlertDialog.Builder(this)
                         .setTitle("About Us")
-                        .setMessage("This is all About Us")
+                        .setMessage("Ripan Chandra Bhowmik\n" +
+                                "ID:111219013\n" +
+                                "\n" +
+                                "Omar Faruk\n" +
+                                "ID: 111219005\n" +
+                                "\n" +
+                                "Sohel Ahmed\n" +
+                                "ID:111219010")
                         .setPositiveButton("Ok"){_,_->}
                         .create().show()
                     true

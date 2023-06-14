@@ -7,8 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.e_waste.R
 import com.example.e_waste.databinding.FragmentProfileBinding
+import com.example.e_waste.model.User
+import com.example.e_waste.utils.ExtensionFunctions.enable
+import com.example.e_waste.utils.ExtensionFunctions.hide
+import com.example.e_waste.utils.ExtensionFunctions.showToast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 
@@ -32,6 +38,18 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.bind(view)
 
         auth = Firebase.auth
+
+        val registeredDocumentReference = Firebase.firestore.collection("registeredUsers").document(auth.currentUser?.uid!!)
+        registeredDocumentReference.get().addOnSuccessListener { userDoc->
+            val user = userDoc.toObject<User>()
+
+            binding.apply {
+                txtUsername.text = user?.username
+                txtContact.text = user?.contact
+                txtEmail.text = user?.email
+            }
+
+        }
 
         binding.txtSignOut.setOnClickListener {
             auth.signOut()

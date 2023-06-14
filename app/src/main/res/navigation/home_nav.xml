@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_homeFragment_to_addPropertyFragment"
             app:destination="@id/addPropertyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_findFragment"
+            app:destination="@id/findFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment2"
@@ -31,4 +37,14 @@
         android:name="com.example.e_waste.ui.home.AddPropertyFragment"
         android:label="fragment_add_property"
         tools:layout="@layout/fragment_add_property" />
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.example.e_waste.ui.home.lostfound.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" />
+    <fragment
+        android:id="@+id/findFragment"
+        android:name="com.example.e_waste.ui.home.lostfound.FindFragment"
+        android:label="fragment_find"
+        tools:layout="@layout/fragment_find" />
 </navigation>

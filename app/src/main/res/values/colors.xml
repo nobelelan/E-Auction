@@ -22,4 +22,8 @@
     <color name="pink_200">#ff7961</color>
     <color name="pink_500">#f44336</color>
     <color name="pink_700">#ba000d</color>
+
+
+    <color name="transparent">#00000000</color>
+    <color name="hintTextColor">#787878</color>
 </resources>

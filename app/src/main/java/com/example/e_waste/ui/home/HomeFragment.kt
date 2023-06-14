@@ -72,7 +72,16 @@ class HomeFragment : Fragment() {
             }
 
             override fun onItemSelected(position: Int) {
-                TODO("Not yet implemented")
+                when(position){
+                    0, 1 -> {
+                        // Lost Something
+                        findNavController().navigate(R.id.action_homeFragment_to_findFragment)
+                    }
+                    2, 3 -> {
+                        // Found Something
+                        findNavController().navigate(R.id.action_homeFragment_to_postFragment)
+                    }
+                }
             }
         })
 

@@ -53,6 +53,7 @@ class ProfileFragment : Fragment() {
 
         binding.txtSignOut.setOnClickListener {
             auth.signOut()
+            activity?.finish()
         }
     }
 

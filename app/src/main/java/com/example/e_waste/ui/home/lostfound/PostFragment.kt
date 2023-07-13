@@ -93,7 +93,8 @@ class PostFragment : Fragment() {
                                         "name" to propertyName,
                                         "imageUri" to uri.toString(),
                                         "place" to foundPlace,
-                                        "postedBy" to user?.username
+                                        "postedBy" to user?.username,
+                                        "contact" to user?.contact
                                     )
                                 ).addOnSuccessListener {
                                     binding.pbPost.hide()

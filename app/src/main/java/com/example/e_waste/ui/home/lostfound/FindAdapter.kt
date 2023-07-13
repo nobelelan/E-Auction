@@ -40,6 +40,7 @@ class FindAdapter: RecyclerView.Adapter<FindAdapter.FindViewHolder>() {
             txtPropertyName.text = foundProperty.name
             txtPlaceFound.text = "Found Location: ${foundProperty.place}"
             txtPostedBy.text = "Found By: ${foundProperty.postedBy}"
+            txtContact.text = "Contact: ${foundProperty.contact}"
 
             Glide.with(holder.itemView.context)
                 .load(foundProperty.imageUri)

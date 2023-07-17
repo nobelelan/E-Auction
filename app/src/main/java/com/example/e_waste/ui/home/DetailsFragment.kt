@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.e_waste.R
 import com.example.e_waste.databinding.FragmentDetailsBinding
+import com.example.e_waste.model.Property
 import com.example.e_waste.model.User
 import com.example.e_waste.utils.ExtensionFunctions.hide
 import com.example.e_waste.utils.ExtensionFunctions.show
@@ -60,6 +61,7 @@ class DetailsFragment : Fragment() {
             txtStartingBid.text = "Starting Bid:\n${property.price}/="
             txtCurrentBid.text = "Current Bid: \n${property.currentBid}/="
             txtTopBidder.text = "Top Bidder: ${property.topBidder}"
+            txtTotalBids.text = "Total Bids: ${property.totalBids}"
             txtPropertyName.text = property.name
             txtPropertyDetails.text = property.description
             Glide.with(requireContext()).load(property.url).into(imgProperty)
@@ -78,10 +80,12 @@ class DetailsFragment : Fragment() {
                         .get().addOnSuccessListener {
                             if (it.documents.isNotEmpty()){
                                 it.forEach{document->
+                                    val totalBids = document.toObject<Property>().totalBids.toString().toInt()
                                     allPropertiesCollectionRef.document(document.id)
                                         .update(
                                             hashMapOf(
                                                 "currentBid" to newBid.toString(),
+                                                "totalBids" to "${totalBids + 1}"
                                                 ) as Map<String, Any>
                                         ).addOnSuccessListener {
                                             binding.pbDetails.hide()

@@ -127,6 +127,7 @@ class HomeFragment : Fragment() {
                 "price" to property.price.toString(),
                 "currentBid" to property.currentBid.toString(),
                 "topBidder" to property.topBidder.toString(),
+                "totalBids" to property.totalBids.toString(),
                 "description" to property.description.toString()
             )
         )

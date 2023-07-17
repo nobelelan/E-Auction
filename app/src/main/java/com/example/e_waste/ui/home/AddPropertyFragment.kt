@@ -106,34 +106,24 @@ class AddPropertyFragment : Fragment() {
                                 requireActivity().showToast("Image uploaded successfully!")
                                 imageRef.downloadUrl.addOnSuccessListener { uri ->
                                     // Store the image URI in your model or perform other actions
-                                    when(selectedProductType){
-                                        VARIETIES -> {
-                                            binding.btnSubmitProperty.setOnClickListener {
+                                    binding.btnSubmitProperty.setOnClickListener {
+                                        when(selectedProductType){
+                                            VARIETIES -> {
                                                 addVarieties(uri.toString())
                                             }
-                                        }
-                                        APARTMENT -> {
-                                            binding.btnSubmitProperty.setOnClickListener {
+                                            APARTMENT -> {
                                                 addAllProperties(APARTMENT, uri.toString())
                                             }
-                                        }
-                                        LAND -> {
-                                            binding.btnSubmitProperty.setOnClickListener {
+                                            LAND -> {
                                                 addAllProperties(LAND, uri.toString())
                                             }
-                                        }
-                                        CAR -> {
-                                            binding.btnSubmitProperty.setOnClickListener {
+                                            CAR -> {
                                                 addAllProperties(CAR, uri.toString())
                                             }
-                                        }
-                                        BIKE -> {
-                                            binding.btnSubmitProperty.setOnClickListener {
+                                            BIKE -> {
                                                 addAllProperties(BIKE, uri.toString())
                                             }
-                                        }
-                                        RESTAURANT -> {
-                                            binding.btnSubmitProperty.setOnClickListener {
+                                            RESTAURANT -> {
                                                 addAllProperties(RESTAURANT, uri.toString())
                                             }
                                         }

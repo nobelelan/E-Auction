@@ -73,11 +73,11 @@ class HomeFragment : Fragment() {
 
             override fun onItemSelected(position: Int) {
                 when(position){
-                    0, 1 -> {
+                    1, 2 -> {
                         // Lost Something
                         findNavController().navigate(R.id.action_homeFragment_to_findFragment)
                     }
-                    2, 3 -> {
+                    3, 4 -> {
                         // Found Something
                         findNavController().navigate(R.id.action_homeFragment_to_postFragment)
                     }
@@ -164,6 +164,7 @@ class HomeFragment : Fragment() {
 
     private fun setUpImageSlider() {
         val imageList = ArrayList<SlideModel>()
+        imageList.add(SlideModel(R.drawable.e_auction))
         imageList.add(SlideModel(R.drawable.lost_something))
         imageList.add(SlideModel(R.drawable.findt_it))
         imageList.add(SlideModel(R.drawable.found_something))

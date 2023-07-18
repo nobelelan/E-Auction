@@ -3,6 +3,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:icon="@drawable/baseline_active_auction"
+        android:title="Active Auctions" />
+    <item
+        android:icon="@drawable/baseline_date_range"
+        android:title="Auctions By Closing Date" />
+    <item
+        android:icon="@drawable/baseline_thumb_up"
+        android:title="Results Of Auction" />
+    <item
+        android:icon="@drawable/baseline_currency_rupee"
+        android:title="Auctions by Value" />
+    <item
+        android:icon="@drawable/baseline_organization"
+        android:title="Auctions by Org" />
+    <item
+        android:icon="@drawable/baseline_category"
+        android:title="Auctions By Prod Category" />
+    <item
+        android:icon="@drawable/baseline_free_cancellation"
+        android:title="Cancelled" />
+    <item
+        android:icon="@drawable/baseline_question_mark"
+        android:title="Faq" />
+    <item
+        android:icon="@drawable/baseline_arrow_downward"
+        android:title="Download" />
+    <item
+        android:icon="@drawable/baseline_report"
+        android:title="MIS Reports" />
+
+    <item
         android:id="@+id/about_project"
         android:icon="@drawable/baseline_info"
         android:title="About this Project"/>

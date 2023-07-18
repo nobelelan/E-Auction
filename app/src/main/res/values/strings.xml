@@ -5,4 +5,6 @@
     <string name="removed_from_wishlist">Removed from favourites.</string>
     <string name="added_to_fav">Added to favourites</string>
     <string name="about_project">This is mainly an online bidding application, other than that, people can look for what they have lost recently or post if they have found something that belongs to another person.</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
 </resources>

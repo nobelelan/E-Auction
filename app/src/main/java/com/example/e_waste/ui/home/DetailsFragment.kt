@@ -64,6 +64,7 @@ class DetailsFragment : Fragment() {
             txtTotalBids.text = "Total Bids: ${property.totalBids}"
             txtPropertyName.text = property.name
             txtPropertyDetails.text = property.description
+            txtTopBidderContact.text = property.topBidderContact
             Glide.with(requireContext()).load(property.url).into(imgProperty)
 
             btnPlaceBid.setOnClickListener {
@@ -96,6 +97,7 @@ class DetailsFragment : Fragment() {
                                                     .update(
                                                         hashMapOf(
                                                             "topBidder" to user?.username.toString(),
+                                                            "topBidderContact" to user?.contact.toString()
                                                         ) as Map<String, Any>
                                                     )
 
@@ -131,6 +133,7 @@ class DetailsFragment : Fragment() {
                                                     .update(
                                                         hashMapOf(
                                                             "topBidder" to user?.username.toString(),
+                                                            "topBidderContact" to user?.contact.toString()
                                                         ) as Map<String, Any>
                                                     )
 

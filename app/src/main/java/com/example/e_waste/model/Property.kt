@@ -11,6 +11,7 @@ data class Property(
     val price: String? = "",
     val currentBid: String? = "",
     val topBidder: String? = "",
+    val topBidderContact: String? = "",
     val totalBids: String? = "0",
     val description: String? = ""
 ): Parcelable

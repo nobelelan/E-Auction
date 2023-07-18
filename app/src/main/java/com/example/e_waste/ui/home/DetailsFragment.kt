@@ -62,9 +62,9 @@ class DetailsFragment : Fragment() {
             txtCurrentBid.text = "Current Bid: \n${property.currentBid}/="
             txtTopBidder.text = "Top Bidder: ${property.topBidder}"
             txtTotalBids.text = "Total Bids: ${property.totalBids}"
+            txtTopBidderContact.text = "Top Bidder Contact: ${property.topBidderContact}"
             txtPropertyName.text = property.name
             txtPropertyDetails.text = property.description
-            txtTopBidderContact.text = property.topBidderContact
             Glide.with(requireContext()).load(property.url).into(imgProperty)
 
             btnPlaceBid.setOnClickListener {
